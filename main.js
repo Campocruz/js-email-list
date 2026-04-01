@@ -1,8 +1,14 @@
-console.log('work');
-const api_mail_endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
+const listItems = 10;
 
-fetch(api_mail_endpoint)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.response)
-  })
+const api_mail_endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
+const emailListEl = document.getElementById('email_list');
+
+for (let i = 0; i < listItems; i++) {
+  fetch(api_mail_endpoint)
+    .then(response => response.json())
+    .then(data => {
+      const liEl = document.createElement('li');
+      liEl.innerHTML = data.response;
+      emailListEl.appendChild(liEl);
+    })
+}
